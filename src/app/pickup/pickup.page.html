@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title> Dados do Atendimento </ion-title>
+    <ion-buttons slot="end" *ngIf="trip.status == 'waiting'">
+      <ion-button color="danger" fill="solid" (click)="cancelTrip()">CANCELA
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-list lines="none">
+        <ion-item *ngIf="passenger.phoneNumber">
+          <ion-label>
+            <ion-text>
+              <h2>{{(passenger)?.name }}</h2>
+            </ion-text>
+            <ion-text>
+              <p>{{(passenger)?.phoneNumber }}</p>
+            </ion-text>
+          </ion-label>
+          <ion-button slot="end" href="tel:{{passenger.phoneNumber}}">
+            <ion-icon name="call"></ion-icon>&nbsp; FONE
+          </ion-button>
+
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            <ion-text>
+              <h2>LOCAL</h2>
+            </ion-text>
+            <ion-text>
+              <p *ngIf="trip.origin != undefined">{{ trip.origin.vicinity }}</p>
+            </ion-text>
+          </ion-label>
+          <ion-button slot="end" fill="outline" color="dark"
+            (click)="getDirection(trip.origin.location.lat,trip.origin.location.lng)">
+            <ion-icon name="navigate"></ion-icon>&nbsp; NAVEGAR
+          </ion-button>
+        </ion-item>
+        <!--ion-item>
+          <ion-label>
+            <ion-text>
+              <h2>{{'TO' | translate}}</h2>
+            </ion-text>
+            <ion-text>
+              <p *ngIf="trip.destination != undefined">{{ trip.destination.vicinity }}</p>
+            </ion-text>
+          </ion-label>
+          <ion-button slot="end" fill="outline" color="dark"
+            (click)="getDirection(trip.destination.location.lat,trip.destination.location.lng)">
+            <ion-icon name="navigate"></ion-icon>&nbsp; {{'NAVIGATE' | translate}}
+          </ion-button>
+        </ion-item-->
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <div class="ion-padding">
+    <table>
+      <tr>
+        <td>TOTAL: </td>
+        <td>{{ trip.currency }} {{trip.fee}} <span class="payment-mode">{{trip.paymentMethod}}</span></td>
+      </tr>
+    </table>
+  </div>
+</ion-content>
+<ion-footer class="ion-padding">
+  <ion-toolbar>
+    <ion-button *ngIf="trip.status == 'waiting'" expand="block" color="dark" (click)="pickup()">INICIAR ATENDIMENTO
+    </ion-button>
+    <ion-button *ngIf="trip.status == 'going'" expand="block" color="danger" (click)="showPayment()">
+     COMPLETAR ATENDIMENTO</ion-button>
+  </ion-toolbar>
+</ion-footer>

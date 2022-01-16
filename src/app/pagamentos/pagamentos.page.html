@@ -1,0 +1,251 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title> PAGAMENTOS </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="ionicForm" (ngSubmit)="submitForm(ionicForm.value)" novalidate>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label position="floating">Valor</ion-label>
+            <ion-input type="float" formControlName="valor"> </ion-input>
+          </ion-item>
+          <span class="error ion-padding" *ngIf="isSubmitted && errorControl.valor.errors?.required">
+            Numero do Cartão é requerido.
+          </span>
+          <span class="error ion-padding" *ngIf="isSubmitted && errorControl.valor.errors?.minlength">
+            Numero do Cartão aceita somente números .
+          </span>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size=12>
+          <ion-item>
+            <ion-label position="floating">Numero Cartão</ion-label>
+            <ion-input (ionInput)="buscaBandeira($event)" formControlName="numCard" type="text">
+
+              <ion-img position="fixed" class="'vehicle-img'" src={{thumbnail}}></ion-img>
+            </ion-input>
+          </ion-item>
+          <span class="error ion-padding" *ngIf="isSubmitted && errorControl.numCard.errors?.required">
+            Numero do Cartão é requerido.
+          </span>
+          <span class="error ion-padding" *ngIf="isSubmitted && errorControl.numCard.errors?.minlength">
+            Numero do Cartão aceita somente números .
+          </span>
+        </ion-col>
+      </ion-row>
+
+
+      <ion-row>
+        <ion-col col-4>
+          <ion-item>
+            <ion-label position="floating">Ano Val. </ion-label>
+            <!-- 3 input tags suppose to show in the same line -->
+            <ion-input formControlName="anoValCard" maxlength="4" placeholder="ANO" type="text"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col col-4>
+          <ion-label position="floating">Mês Val.</ion-label>
+          <ion-input formControlName="mesValCard" maxlength="2" placeholder="MES" type="number"></ion-input>
+        </ion-col>
+        <ion-col col-4>
+          <ion-label position="floating">Cod Seg. </ion-label>
+          <ion-input formControlName="codSegCard" maxlengh="3" placeholder="COD" type="number"></ion-input>
+        </ion-col>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.anoValCard.errors?.required">
+          Campo Obrigatorio.
+        </span>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.mesValCard.errors?.pattern">
+          Campo Obrigatorio.
+        </span>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.codSegCard.errors?.maxLengh">
+          Campo Obrigatorio.
+        </span>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="6">
+          <ion-item>
+            <ion-label position="floating">Nome</ion-label>
+            <ion-input type="text" formControlName="nome" placeholder="Nome" required></ion-input>
+          </ion-item>
+          <span class="error ion-padding" *ngIf="isSubmitted && errorControl.nome.errors?.required">
+            Campo Obrigatorio.
+          </span>
+        </ion-col>
+
+        <ion-col size="6">
+          <ion-item>
+            <ion-label position="floating">Sobrenome</ion-label>
+            <ion-input type="text" formControlName="sobrenome" placeholder="Sobrenome" required></ion-input>
+          </ion-item>
+          <span class="error ion-padding" *ngIf="isSubmitted && errorControl.sobrenome.errors?.required">
+            Campo Obrigatorio.
+          </span>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="6" class="col-top-left">
+          <ion-item>
+            <ion-label position="floating">CPF</ion-label>
+            <ion-input type="text" formControlName="cpf" placeholder="CPF" required></ion-input>
+          </ion-item>
+          <span class="error ion-padding" *ngIf="isSubmitted && errorControl.cpf.errors?.required">
+            Campo Obrigatorio.
+          </span>
+          <span class="error ion-padding" *ngIf="isSubmitted && errorControl.cpf.errors?.pattern">
+            Somente Números.
+          </span>
+        </ion-col>
+
+        <ion-col size=6 class="col-top-right">
+          <ion-item lines="full">
+            <ion-label position="floating">Nascimento</ion-label>
+            <ion-datetime  displayFormat="DD/MM/YYYY" formControlName="dtNasc" [value]="defaultDate"></ion-datetime>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size=4 class="col-top-left">
+          <ion-item>
+            <ion-label position="floating">DDD</ion-label>
+            <ion-input type="text" formControlName="ddd"></ion-input>
+          </ion-item>
+          <span class="error ion-padding" *ngIf="isSubmitted && errorControl.ddd.errors?.pattern">
+            Somente Numero.
+          </span>
+        </ion-col>
+        <ion-col size=8 class="col-top-left">
+          <ion-item>
+            <ion-label position="floating">Telefone</ion-label>
+            <ion-input type="text" formControlName="fone"></ion-input>
+          </ion-item>
+          <span class="error ion-padding" *ngIf="isSubmitted && errorControl.fone.errors?.pattern">
+            Somente Numero.
+          </span>
+        </ion-col>
+        </ion-row>
+
+        <ion-row>
+        <ion-col size="12" class="col-top-left">
+          <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input type="email" formControlName="email"></ion-input>
+          </ion-item>
+          <span class="error ion-padding" *ngIf="isSubmitted && errorControl.email.errors?.pattern">
+            Verifique Formato do email.
+          </span>
+          <span class="error ion-padding" *ngIf="isSubmitted && errorControl.email.errors?.required">
+            Campo Obrigatório.
+          </span>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="7">
+          <ion-item>
+            <ion-label position="floating">Endereço</ion-label>
+            <ion-input type="text" formControlName="logradouro"></ion-input>
+          </ion-item>
+          <span class="error ion-padding" *ngIf="isSubmitted && errorControl.logradouro.errors?.required">
+            Campo Obrigatorio
+          </span>
+        </ion-col>
+        <ion-col>
+          <ion-item size="2">
+            <ion-label position="floating">Número</ion-label>
+            <ion-input type="text" formControlName="numero"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+
+
+      <ion-row>
+
+        <ion-col size="4">
+          <ion-item>
+            <ion-label position="floating">CEP</ion-label>
+            <ion-input type="text" formControlName="cep"></ion-input>
+          </ion-item>
+          <span class="error ion-padding" *ngIf="isSubmitted && errorControl.cep.errors?.required">
+            Campo Obrigatorio
+          </span>
+        </ion-col>
+
+        <ion-col size="3">
+          <ion-item>
+            <ion-label position="floating">Estado</ion-label>
+            <ion-input type="text" formControlName="estado"></ion-input>
+          </ion-item>
+          <span class="error ion-padding" *ngIf="isSubmitted && errorControl.estado.errors?.required">
+            Campo Obrigatorio
+          </span>
+        </ion-col>
+        <ion-col size="5">
+          <ion-item>
+            <ion-label position="floating">Cidade</ion-label>
+            <ion-input type="text" formControlName="cidade"></ion-input>
+          </ion-item>
+          <span class="error ion-padding" *ngIf="isSubmitted && errorControl.cidade.errors?.required">
+            Campo Obrigatorio
+          </span>
+        </ion-col>
+      </ion-row>
+
+      <ion-item>
+        <ion-label>Parcelas</ion-label>
+        <ion-select formControlName="parcelas" value="brown" ok-text="OK" cancel-text="Fechar">
+          <ion-select-option *ngFor="let p of parcelas"
+            [value]="[{ quantity: p['quantity'], installmentAmount: p['installmentAmount'] }]">
+            {{ p['quantity'] + "X " + p['installmentAmount'] }}</ion-select-option>
+        </ion-select>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.parcelas.errors?.required">
+          Campo Obrigatorio
+        </span>
+      </ion-item>
+
+
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" color="danger" expand="block">Submit</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+
+</ion-content>
+
+<script type="text/javascript"
+  src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js"></script>
+<!--
+<ion-content padding>
+  
+
+    
+    
+
+     
+    
+      
+
+   
+    
+  
+
+  </ion-list>
+
+  <button ion-button block (click)="pagseg.pagar()">Salvar</button>
+
+</ion-content>-->

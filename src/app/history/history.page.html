@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{'HISTORY' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="padding: 4px;background:#fbfbfb;">
+    <ion-row>
+      <ion-col>
+        <ion-datetime max="{{today}}" value="{{today}}" [(ngModel)]="fromDate"></ion-datetime>
+      </ion-col>
+      <ion-col>
+        <ion-datetime max="{{today}}" min={{fromDate}} value="{{today}}" [(ngModel)]="toDate"></ion-datetime>
+      </ion-col>
+      <ion-col>
+        <ion-button size="small" fill="clear" (click)="applyFilter()">
+          <ion-icon name="filter-outline"></ion-icon>
+        </ion-button>
+        <ion-button size="small" fill="clear" (click)="reset()">
+          <ion-icon name="refresh-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <ion-list lines="none">
+    <ion-item>
+      <ion-label>{{'EARNINGS' | translate}}</ion-label>
+      <ion-text slot="end" class="total-earning">
+        {{settings.currency}} {{earning | number: '1.2-2'}}
+      </ion-text>
+    </ion-item>
+    <p *ngIf="trips.length == 0" style="margin-top: 5px; text-align: center">No Trips Found</p>
+    <ion-item *ngFor="let trip of trips" class="trip">
+      <ion-label>
+        <h3>{{ trip.createdAt | date:'MMM dd, yyyy hh:mm a'}}</h3>
+        <p>{{trip.createdAt}} • {{trip.status}}</p>
+        <p text-wrap>
+          <ion-icon name="pin" style="color:#F44336"></ion-icon> {{ trip.origin.vicinity }}
+        </p>
+        <p text-wrap>
+          <ion-icon name="pin" style="color:#4caf50"></ion-icon> {{ trip.destination.vicinity }}
+        </p>
+      </ion-label>
+      <ion-text class="earning" slot="end">{{trip.currency}} {{trip.commission}}
+      </ion-text>
+    </ion-item>
+  </ion-list>
+</ion-content>

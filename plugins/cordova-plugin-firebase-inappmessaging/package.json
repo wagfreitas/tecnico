@@ -1,0 +1,65 @@
+{
+  "_from": "cordova-plugin-firebase-inappmessaging",
+  "_id": "cordova-plugin-firebase-inappmessaging@5.0.0",
+  "_inBundle": false,
+  "_integrity": "sha512-/DxH7n1cC3hesMtoyBZxJejkxqwDEHiJQSb4j8mlkQXPhQTP1TmoPTDZY4253vJ1I1nBApNnuQ7HFfxV1BbRpw==",
+  "_location": "/cordova-plugin-firebase-inappmessaging",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-plugin-firebase-inappmessaging",
+    "name": "cordova-plugin-firebase-inappmessaging",
+    "escapedName": "cordova-plugin-firebase-inappmessaging",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-firebase-inappmessaging/-/cordova-plugin-firebase-inappmessaging-5.0.0.tgz",
+  "_shasum": "2fdff715b396aa2428388d29b0684805e06ca0ba",
+  "_spec": "cordova-plugin-firebase-inappmessaging",
+  "_where": "/Users/wagner/Projetos /JetPort/JetAtualPublicado/tecnico",
+  "author": {
+    "name": "Maksim Chemerisuk",
+    "email": "chemerisuk@gmail.com",
+    "url": "https://github.com/chemerisuk"
+  },
+  "bugs": {
+    "url": "https://github.com/chemerisuk/cordova-plugin-firebase-inappmessaging/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-firebase-inappmessaging",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "deprecated": false,
+  "description": "Cordova plugin for Firebase In-App Messaging",
+  "funding": "https://github.com/chemerisuk/cordova-plugin-firebase-inappmessaging?sponsor=1",
+  "homepage": "https://github.com/chemerisuk/cordova-plugin-firebase-inappmessaging#readme",
+  "keywords": [
+    "cordova",
+    "firebase",
+    "in-app messaging",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "license": "MIT",
+  "name": "cordova-plugin-firebase-inappmessaging",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chemerisuk/cordova-plugin-firebase-inappmessaging.git"
+  },
+  "scripts": {
+    "postversion": "git push && git push --tags",
+    "version": "perl -p -i -e 's/(version=)\"\\d+\\.\\d+\\.\\d+\"/$1\"'$npm_package_version'\"$2/' plugin.xml && git add plugin.xml"
+  },
+  "version": "5.0.0"
+}
