@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center"> Cadastrar </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="login-header">
+    <img src="../../assets/img/logo.png" />
+    <!-- <h3>{{ 'APP_NAME' | translate }}</h3>
+    <p>{{ 'APP_SUBTEXT' | translate }} </p> -->
+  </div>
+  <div>
+    <div class="ion-padding" *ngIf="step == 'step1'">
+      <ion-list lines="none">
+        <ion-item>
+          <ion-label position="stacked">Nome Completo</ion-label>
+          <ion-input type="text" [(ngModel)]="userInfo.name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Email</ion-label>
+          <ion-input type="email" [(ngModel)]="userInfo.email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Senha (MIN 6 digitos)</ion-label>
+          <ion-input type="password" [(ngModel)]="userInfo.password"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Fone</ion-label>
+          <ion-input type="tel" [(ngModel)]="userInfo.phoneNumber"></ion-input>
+        </ion-item>
+      </ion-list>
+      <div style="padding: 0px 16px">
+        <ion-button color="dark" expand="block" (click)="goto('step2')">Cadastrar</ion-button>
+      </div>
+    </div>
+    <div *ngIf="step == 'step2'">
+      <ion-list lines="none">
+        <ion-item>
+          <ion-label position="stacked">Marca do Veículo</ion-label>
+          <ion-input
+            type="text"
+            [(ngModel)]="userInfo.brand"
+            placeholder="Marca do Veiculo"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Modelo</ion-label>
+          <ion-input type="text" [(ngModel)]="userInfo.model" placeholder="Modelo"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Placa</ion-label>
+          <ion-input type="text" [(ngModel)]="userInfo.plate" placeholder="Placa"></ion-input>
+        </ion-item>
+
+        <p style="text-align: center; color: #4caf50" *ngIf="userInfo.docsURL">
+          Upload realizado com sucesso
+        </p>
+        <div (click)="chooseDocs()" class="uploadDiv">
+          <ion-icon name="cloud-upload"></ion-icon>
+          <p>Clique para Upload</p>
+        </div>
+      </ion-list>
+      <div>
+        <form ngNoForm>
+          <input id="docsPDF" name="file" type="file" (change)="uploadDocs()" />
+        </form>
+      </div>
+      <div style="padding: 0px 16px">
+        <ion-button color="dark" expand="block" (click)="signup()">Registrar</ion-button>
+      </div>
+    </div>
+  </div>
+  <div class="ion-padding">
+    <p class="termsText">
+      Para se cadastrar você precisa aceitar nossos
+      <span class="link" (click)="openTerms()">termos & condições</span> &
+      <span class="link" (click)="openPrivacy()">política de privacidade</span>
+    </p>
+  </div>
+</ion-content>

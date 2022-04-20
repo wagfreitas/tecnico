@@ -1,0 +1,55 @@
+import { Component, OnInit } from '@angular/core';
+import { AngularFireDatabase } from '@angular/fire/database';
+import { CommonService } from '../services/common.service';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-notifications',
+  templateUrl: './notifications.page.html',
+  styleUrls: ['./notifications.page.scss'],
+})
+export class NotificationsPage implements OnInit {
+
+  notifications: any = [];
+
+  constructor(
+    private db: AngularFireDatabase,
+    private cs: CommonService,
+    private afAuth: AngularFireAuth,
+    private authService: AuthService, 
+    private router: Router
+  ) { }
+
+  ngOnInit() { }
+
+
+
+  ionViewDidEnter() {
+    this.cs.showLoader();
+
+    this.db.list('notifications').snapshotChanges().subscribe((snap: any) => {
+
+      if (snap != null) {
+        let tmp = [];
+        snap.forEach(n => {
+          if (n.payload.val().type == 'drivers' || n.payload.val().type == 'both')
+            tmp.push({ key: n.key, ...n.payload.val() });
+          return false;
+        })
+        this.notifications = tmp.reverse();
+      }
+
+      this.cs.hideLoader();
+    });
+  }
+
+  logout() {
+    this.authService.logout().then(() => {
+      localStorage.clear();
+      this.router.navigateByUrl('/login', { skipLocationChange: true, replaceUrl: true })
+    });
+  }
+
+}

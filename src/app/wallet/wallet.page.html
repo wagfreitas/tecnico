@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Carteira</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="header">
+    <h5>Balanço Atual</h5>
+    <p class="amountText">{{settings.currency}} {{ (driver)?.balance }}</p>
+    <ion-button slot="end" color="light" size="small" fill="outline" (click)="withdraw()">Solicitar Pagamento
+    </ion-button>
+  </div>
+  <div class="ion-padding" class="withdrawl-list">
+    <ion-list lines="none">
+      <p style="margin:8px">Histórico</p>
+      <ion-item *ngFor="let record of records">
+        <ion-label>
+          <h3>ID: {{record.createdAt }}</h3>
+          <p>{{ record.createdAt | date: 'dd-MMM-yyyy hh:mm a'}}</p>
+        </ion-label>
+        <ion-note slot="end">
+          <div class="amount"> {{ record.amount }}</div>
+          <div class="status">{{ record.status}}</div>
+        </ion-note>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

@@ -1,0 +1,27 @@
+h3{
+    text-align: center;
+    padding: 8px;
+    color: #4CAF50;
+    font-size: 2rem;
+}
+
+table{
+    width: 100%;
+}
+
+tr{
+    border: 1px solid #eee;
+}
+
+td{
+    padding: 4px;
+}
+
+.footer-md:before{
+    background-image: none !important;
+}
+
+.payment-mode{
+    background: #f2f2f2;
+    padding:2px;
+}

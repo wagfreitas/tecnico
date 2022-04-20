@@ -1,0 +1,22 @@
+.footer-md:before{
+    background: none;
+}
+.header-md:after{
+    background: none;
+}
+
+ion-segment{
+    --background: #222222;
+    --color: #ffffff;
+}
+
+ion-segment-button{
+    --background: #222222;
+    --background-checked: #222222;
+    --background-focused: #222222;
+    --background-hover: #222222;
+    --border-color: #ffffff;
+    --color: #dddddd;
+    --color-focused: #ffffff;
+    --color-checked:#FFEB3B;
+}

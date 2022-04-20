@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Notifficações</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <p *ngIf="notifications.length == 0" style="margin-top: 5px; text-align: center">Nenhuma notificação encontrada</p>
+  <ion-list lines="none">
+    <ion-item *ngFor="let n of notifications">
+      <ion-label>
+        <ion-text>
+          <h3>{{n.title}}</h3>
+        </ion-text>
+        <ion-text>
+          <p style="white-space: pre-wrap;">{{n.description}}</p>
+        </ion-text>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

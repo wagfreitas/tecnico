@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Configurações</ion-title>
+    <ion-buttons slot="end">
+
+      <ion-button (click)="logout()">
+        <ion-icon name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="none">
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="{{user.photoURL}}" onerror="this.src='./assets/img/default-dp.png'" />
+      </ion-avatar>
+      <ion-label>
+        <h3 style="font-weight: 500;">{{user.name}}</h3>
+        <p>{{user.phoneNumber}}</p>
+      </ion-label>
+      <ion-button slot="end" color="dark" fill="outline" routerLink="/profile">Editar</ion-button>
+    </ion-item>
+    <ion-item>
+      <ion-icon slot="start" name="notifications"></ion-icon>
+      <ion-label>
+        <h3>Notificações </h3>
+        <p>Notificações em Texto</p>
+      </ion-label>
+      <ion-toggle slot="end" (click)="change()" [(ngModel)]="user.isPushEnabled"></ion-toggle>
+    </ion-item>
+    <ion-item (click)="openSupport()">
+      <ion-icon slot="start" name="help-buoy"></ion-icon>
+      <ion-label>
+       Ajuda
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
