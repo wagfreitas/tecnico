@@ -55,6 +55,7 @@ ion-button{
 }
 
 ion-input, ion-textarea{
+  color: #ffff;
   margin-top: 1rem !important;
   border: 2px solid #ddd !important;
   border-radius: 4px;
@@ -68,7 +69,7 @@ ion-item {
 
 .native-input.sc-ion-input-md, .native-textarea.sc-ion-textarea-md{
   padding: 0.5rem !important;
-  color: #555;   
+  color: rgb(255, 255, 255);   
 }
 
 .wallet {
@@ -116,6 +117,15 @@ ion-icon{
 ion-list {/* optional, but it needs when you use gradient as a background color.*/
     background: transparent;
 }
+.sidemenu-header{
+  background: #000000;
+  height: 220px;
+  padding-top:60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 }
 
 .termsText{

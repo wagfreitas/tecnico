@@ -11,6 +11,7 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 
+
 @Component({
   selector: 'app-pickup',
   templateUrl: './pickup.page.html',
@@ -23,7 +24,7 @@ export class PickupPage implements OnInit {
   passenger: any = {};
   isTripStarted = false;
   discount;
-  tax;
+  tax = 0 ;
 
   constructor(
     private tripService: TripService,
@@ -43,8 +44,7 @@ export class PickupPage implements OnInit {
 
   ionViewDidEnter() {
     this.trip = this.tripService.getCurrentTrip();
-    this.discount = (this.trip.rawfee * (this.trip.discount / 100)).toFixed(2)
-    this.tax = (this.trip.fee * (this.trip.tax / 100)).toFixed(2);
+   //this.discount = (this.trip.rawfee * (this.trip.discount / 100)).toFixed(2)
     let getTrips = this.tripService.getTripStatus(this.trip.key).valueChanges().subscribe((trip: any) => {
       console.log(trip);
       this.trip.status = trip.status;
@@ -104,17 +104,22 @@ export class PickupPage implements OnInit {
   }
 
   getDirection(lat, lng) {
-    console.log("call");
+    console.log(lat,lng)
     this.geolocation.getCurrentPosition().then(geo => {
       geo.coords.latitude
      
-      let url =  `https://waze.com/ul?from=ll${geo.coords.latitude},${geo.coords.longitude}&to=ll${lat},${lng}&z=10`
+      let url = `https://waze.com/ul?ll=${lat},${lng}&z=10`
+
       // `https://waze.com/ul?ll=${geo.coords.latitude},${geo.coords.longitude}&z=10`
       //"https://www.google.com/maps/dir/?api=1&travelmode=driving&origin=" + geo.coords.latitude + "," + geo.coords.longitude + "&destination=" + lat + "," + lng;
       window.open(url);
     }).catch(err => {
       console.log("Error ");
     })
+  }
+
+  valuePayment(){
+    console.log(this.tax)
   }
 
 

@@ -21,11 +21,11 @@
               <p>{{(passenger)?.phoneNumber }}</p>
             </ion-text>
           </ion-label>
-          <ion-button slot="end" href="tel:{{passenger.phoneNumber}}">
-            <ion-icon name="call"></ion-icon>&nbsp; FONE
+          <ion-button color="dark"  slot="end" href="tel:{{passenger.phoneNumber}}">
+            <ion-icon  name="call"></ion-icon>&nbsp; FONE
           </ion-button>
-
         </ion-item>
+       
         <ion-item>
           <ion-label>
             <ion-text>
@@ -40,23 +40,29 @@
             <ion-icon name="navigate"></ion-icon>&nbsp; NAVEGAR
           </ion-button>
         </ion-item>
+
+        <ion-item >
+          <ion-label> <ion-text>
+            <h2>TOTAL FINAL</h2>
+          </ion-text>   
+        </ion-label>
+          <ion-input color="dark" [(ngModel)]="tax" slot="end"></ion-input>
+          <ion-button slot="end" fill="outline" color="dark"
+            (click)="valuePayment()">
+          OK
+          </ion-button>
+        </ion-item>
+
       </ion-list>
     </ion-card-content>
   </ion-card>
-  <div class="ion-padding">
-    <table>
-      <tr>
-        <td>TOTAL: </td>
-        <td>{{ trip.currency }} {{trip.fee}} <span class="payment-mode">{{trip.paymentMethod}}</span></td>
-      </tr>
-    </table>
-  </div>
+
 </ion-content>
 <ion-footer class="ion-padding">
   <ion-toolbar>
     <ion-button *ngIf="trip.status == 'waiting'" expand="block" color="dark" (click)="pickup()">INICIAR ATENDIMENTO
     </ion-button>
-    <ion-button *ngIf="trip.status == 'going'" expand="block" color="danger" (click)="showPayment()">
+    <ion-button *ngIf="trip.status == 'going'" expand="block" color="dark" (click)="showPayment()">
      COMPLETAR ATENDIMENTO</ion-button>
   </ion-toolbar>
 </ion-footer>

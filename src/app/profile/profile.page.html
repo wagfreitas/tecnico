@@ -31,20 +31,16 @@
       </div>
       <ion-list lines="none">
         <ion-item>
-          <ion-label position="stacked">NOME COMPLETO</ion-label>
-          <ion-input type="text" [(ngModel)]="user.name" placeholder="{{'FULLNAME' | translate}}"></ion-input>
+          <ion-label position="stacked"  color="primary">NOME COMPLETO</ion-label>
+          <ion-input type="text" [(ngModel)]="user.name" placeholder="Nome Completo"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label position="stacked">NÚMERO DO FONE</ion-label>
-          <ion-input type="tel" [(ngModel)]="user.phoneNumber" placeholder="{{'PHONE_NUMBER' | translate}}"></ion-input>
+          <ion-label position="stacked"  color="primary">NÚMERO DO FONE</ion-label>
+          <ion-input type="tel" [(ngModel)]="user.phoneNumber" placeholder="Telefone"></ion-input>
         </ion-item>
+      
         <ion-item>
-          <ion-label position="stacked">EMAIL</ion-label>
-          <ion-input type="email" disabled [(ngModel)]="user.email" placeholder="{{'EMAIL_ADDRESS' | translate}}">
-          </ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="stacked">DADOS BANCÁRIOS</ion-label>
+          <ion-label position="stacked"  color="primary">DADOS BANCÁRIOS</ion-label>
           <ion-textarea [(ngModel)]="user.bankinfo"></ion-textarea>
         </ion-item>
       </ion-list>

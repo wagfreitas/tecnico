@@ -88,8 +88,6 @@ export class HomePage {
 
   //Acionado quando o tecnico muda a disponibilidade
   changeAvailability() {
-
-    console.log("estou aqui")
     clearInterval(this.positionTracking);
 
     // se o device for um moile seta a posiçao atual do tecnico
@@ -129,7 +127,6 @@ export class HomePage {
         // find address from lat lng
         geocoder.geocode({ 'latLng': latLng }, (results, status) => {
           if (status == google.maps.GeocoderStatus.OK) {
-            console.log("Resultado da posiçao", results);
             // save locality
             this.locality = this.placeService.setLocalityFromGeocoder(results);
            // console.log('locality', this.locality);
@@ -239,7 +236,7 @@ export class HomePage {
               cordova.plugins.backgroundMode.on('failure', () => console.log("bgm: failed"))
 
               cordova.plugins.backgroundMode.on('disable', () => {
-                console.log('bgm: disable')
+                console.log('bgm: desabilitado')
               });
 
 

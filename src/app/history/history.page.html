@@ -13,7 +13,7 @@
 </ion-header>
 
 <ion-content>
-  <div style="padding: 4px;background:#fbfbfb;">
+  <div style="padding: 4px;background:#141414;">
     <ion-row>
       <ion-col>
         <ion-datetime max="{{today}}" value="{{today}}" [(ngModel)]="fromDate"></ion-datetime>
@@ -43,12 +43,8 @@
     <ion-item *ngFor="let trip of trips" class="trip">
       <ion-label>
         <h3>{{ trip.createdAt | date:'dd MMM , yyyy hh:mm a'}}</h3>
-        <p>{{trip.createdAt}} • {{trip.status}}</p>
         <p text-wrap>
           <ion-icon name="pin" style="color:#F44336"></ion-icon> {{ trip.origin.vicinity }}
-        </p>
-        <p text-wrap>
-          <ion-icon name="pin" style="color:#4caf50"></ion-icon> {{ trip.destination.vicinity }}
         </p>
       </ion-label>
       <ion-text class="earning" slot="end">{{trip.currency}} {{trip.commission}}
