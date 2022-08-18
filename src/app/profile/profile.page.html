@@ -15,10 +15,10 @@
 <ion-content>
   <ion-segment [(ngModel)]="tabs">
     <ion-segment-button value="profile">
-      {{'BASIC_PROFILE' | translate}}
+      PERFIL BÁSICO
     </ion-segment-button>
     <ion-segment-button value="carinfo">
-      {{'CAR_INFO' | translate }}
+      VEÍCULO
     </ion-segment-button>
   </ion-segment>
   <div [ngSwitch]="tabs" class="ion-padding">
@@ -95,5 +95,5 @@
   </div>
 </ion-content>
 <ion-footer class="ion-padding">
-  <ion-button expand="block" (click)="save()">{{'SAVE' | translate}}</ion-button>
+  <ion-button expand="block" (click)="save()">SALVAR</ion-button>
 </ion-footer>

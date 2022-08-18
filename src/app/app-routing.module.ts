@@ -47,14 +47,7 @@ const routes: Routes = [
     path: 'wallet',
     loadChildren: () => import('./wallet/wallet.module').then(m => m.WalletPageModule)
   },
-  {
-    path: 'pagamentos',
-    loadChildren: () => import('./pagamentos/pagamentos.module').then( m => m.PagamentosPageModule)
-  },
-  {
-    path: 'produtos',
-    loadChildren: () => import('./produtos/produtos.module').then( m => m.ProdutosPageModule)
-  }
+ 
 ];
 
 @NgModule({

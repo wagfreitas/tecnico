@@ -33,26 +33,13 @@ export class AppComponent implements OnInit {
       url: '/history',
       icon: 'time'
     },
-    {
-      title: 'Carteira',
-      url: '/wallet',
-      icon: 'wallet'
-    },
-    {
-      title: 'Pagamentos',
-      url: '/pagamentos',
-      icon: 'card'
-    },
+    
     {
       title: 'Notificações',
       url: '/notifications',
       icon: 'notifications'
     },
-    {
-      title: 'Produtos',
-      url: '/produtos',
-      icon: 'barcode'
-    },
+   
 
     {
       title: 'Configurações',

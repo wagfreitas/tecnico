@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>{{'HISTORY' | translate}}</ion-title>
+    <ion-title>Histórico</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -29,15 +29,15 @@
 
   <ion-list lines="none">
     <ion-item>
-      <ion-label>{{'EARNINGS' | translate}}</ion-label>
+      <ion-label>Valor</ion-label>
       <ion-text slot="end" class="total-earning">
         {{settings.currency}} {{earning | number: '1.2-2'}}
       </ion-text>
     </ion-item>
-    <p *ngIf="trips.length == 0" style="margin-top: 5px; text-align: center">No Trips Found</p>
+    <p *ngIf="trips.length == 0" style="margin-top: 5px; text-align: center">Nenhum Atendimento</p>
     <ion-item *ngFor="let trip of trips" class="trip">
       <ion-label>
-        <h3>{{ trip.createdAt | date:'MMM dd, yyyy hh:mm a'}}</h3>
+        <h3>{{ trip.createdAt | date:'dd MM, yyyy hh:mm a'}}</h3>
         <p>{{trip.createdAt}} • {{trip.status}}</p>
         <p text-wrap>
           <ion-icon name="pin" style="color:#F44336"></ion-icon> {{ trip.origin.vicinity }}
