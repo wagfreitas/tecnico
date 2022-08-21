@@ -49,7 +49,6 @@ export class TripService {
   setCurrentTrip(tripId) {
     return this.db.object('trips/' + tripId).snapshotChanges().pipe(take(1)).subscribe((snapshot: any) => {
       this.db.object('trips/' + tripId).update({ key: tripId });
-      console.log(snapshot);
       if (snapshot != null) {
         this.currentTrip = { key: snapshot.key, ...snapshot.payload.val() };
       }

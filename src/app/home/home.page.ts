@@ -87,15 +87,11 @@ export class HomePage {
 
   changeAvailability() {
     clearInterval(this.positionTracking);
-
-
     if (this.platform.is('mobile') && this.driver.isOnline == true) {
-      console.log("entrei aqui incialmente")
       this.permission.checkPermission(this.permission.PERMISSION.ACCESS_FINE_LOCATION).then((res) => {
-        this.common.showToast("App Location Permission: " + res.hasPermission);
+        this.common.showToast("Permissao de Localização: " + res.hasPermission);
         if (!res.hasPermission) {
           this.permission.requestPermission(this.permission.PERMISSION.ACCESS_FINE_LOCATION).then(res => {
-            console.log(res)
           }).catch(err => {
             console.log(err);
           })
@@ -107,9 +103,8 @@ export class HomePage {
     }
 
     if (this.driver.isOnline == true) {
-
-      //this.common.showLoader();
-     // this.loadCtrl.create({ spinner: 'circles', id: 'location-access' }).then(l => l.present());
+      this.common.showLoader();
+      this.loadCtrl.create({ spinner: 'circles', id: 'location-access' }).then(l => l.present());
 
       // get current location
       this.geolocation.getCurrentPosition({
@@ -117,13 +112,13 @@ export class HomePage {
         timeout: 10000
       }).then((resp) => {
         //console.log('chegamos aqui no PC', resp)
-        //this.loadCtrl.dismiss();
+        this.loadCtrl.dismiss();
 
         this.driverService.getDriver(this.driver.uid).update({ isOnline: true });
         //Enabling background mode if app is running on device
 
         this.position = [resp.coords.latitude, resp.coords.longitude];
-        console.log('position', this.position);
+    
 
         let latLng = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
         let geocoder = new google.maps.Geocoder();
@@ -150,7 +145,7 @@ export class HomePage {
                   enableHighAccuracy: true,
                   timeout: 10000
                 }).then((resp) => {
-                  console.log(resp);
+                 
                   this.driverService.updatePosition(this.driver.uid, this.driver.type, this.locality, resp.coords.latitude, resp.coords.longitude, this.driver.rating, this.driver.name);
 
 
@@ -173,12 +168,13 @@ export class HomePage {
           }
         });
       }, (err) => {
-        console.log(err);
         this.loadCtrl.dismiss();
-        this.common.showToast("Something went wrong while accessing your location. Please make sure, you have GPS access on device");
+        this.common.showToast("Erro de localização");
         this.driver.isOnline = false;
         this.driverService.getDriver(this.driver.uid).update({ isOnline: false });
       });
+
+     
 
     }
     else {
@@ -228,7 +224,6 @@ export class HomePage {
 
               this.platform.pause.pipe(take(1)).subscribe(() => {
                 if (this.driver.isOnline) {
-                  console.log("App minimized");
                   cordova.plugins.backgroundMode.setDefaults({ id: -1, title: 'Aplicativo do Técnico', text: 'Background', hidden: false, silent: false });
 
                   cordova.plugins.backgroundMode.setEnabled(true);

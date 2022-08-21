@@ -26,7 +26,6 @@ export class NotificationsPage implements OnInit {
     this.cs.showLoader();
 
     this.db.list('notifications').snapshotChanges().subscribe((snap: any) => {
-
       if (snap != null) {
         let tmp = [];
         snap.forEach(n => {
