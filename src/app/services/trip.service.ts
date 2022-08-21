@@ -31,6 +31,14 @@ export class TripService {
     })
   }
 
+   // pickup passenger
+   addValueToService(tripId, value) {
+   this.db.object('trips/' + tripId).update({
+      valueService: value
+    })
+  }
+
+
   // drop off
   dropOff(tripId) {
     this.db.object('trips/' + tripId).update({

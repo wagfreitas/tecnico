@@ -44,6 +44,9 @@
       "GPS_REQUIRED": "true",
       "PACKAGE_NAME": "com.condsolution.jetporttec"
     },
+    "cordova-plugin-insomnia": {
+      "PACKAGE_NAME": "com.condsolution.jetporttec"
+    },
     "cordova-plugin-ionic-keyboard": {
       "PACKAGE_NAME": "com.condsolution.jetporttec"
     },

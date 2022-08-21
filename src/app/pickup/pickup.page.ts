@@ -25,6 +25,8 @@ export class PickupPage implements OnInit {
   isTripStarted = false;
   discount;
   tax = 0 ;
+  total = false; 
+  finaliza=false
 
   constructor(
     private tripService: TripService,
@@ -46,7 +48,6 @@ export class PickupPage implements OnInit {
     this.trip = this.tripService.getCurrentTrip();
    //this.discount = (this.trip.rawfee * (this.trip.discount / 100)).toFixed(2)
     let getTrips = this.tripService.getTripStatus(this.trip.key).valueChanges().subscribe((trip: any) => {
-      console.log(trip);
       this.trip.status = trip.status;
       if (trip.status == 'canceled') {
         getTrips.unsubscribe();
@@ -89,11 +90,10 @@ export class PickupPage implements OnInit {
       buttons: [{
         text: "Verificar",
         handler: (data) => {
-          console.log(data);
           this.db.object('trips/' + this.trip.key).valueChanges().pipe(take(1)).subscribe((res: any) => {
-            console.log(res);
             if (res.otp != data.otp) this.common.showAlert("Código Inválido");
             else {
+              this.total = true;
               this.isTripStarted = true;
               this.tripService.pickUp(this.trip.key);
             }
@@ -119,7 +119,10 @@ export class PickupPage implements OnInit {
   }
 
   valuePayment(){
-    console.log(this.tax)
+    this.tripService.addValueToService(this.trip.key, this.tax)
+    this.common.showAlert("Valor Atualizado com Sucesso");
+    this.finaliza = true
+
   }
 
 

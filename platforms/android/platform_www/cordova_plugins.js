@@ -48,6 +48,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "runs": true
     },
     {
+      "id": "cordova-plugin-insomnia.Insomnia",
+      "file": "plugins/cordova-plugin-insomnia/www/Insomnia.js",
+      "pluginId": "cordova-plugin-insomnia",
+      "clobbers": [
+        "window.plugins.insomnia"
+      ]
+    },
+    {
       "id": "cordova-plugin-ionic-keyboard.keyboard",
       "file": "plugins/cordova-plugin-ionic-keyboard/www/android/keyboard.js",
       "pluginId": "cordova-plugin-ionic-keyboard",
@@ -87,6 +95,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-background-mode": "0.7.3",
     "cordova-plugin-firebasex": "13.0.1",
     "cordova-plugin-geolocation": "4.1.0",
+    "cordova-plugin-insomnia": "4.3.0",
     "cordova-plugin-ionic-keyboard": "2.2.0",
     "cordova-plugin-ionic-webview": "5.0.0",
     "cordova-plugin-splashscreen": "6.0.0",

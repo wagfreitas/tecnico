@@ -108,7 +108,6 @@ export class HomePage {
 
     }
 
-    // se for um computador 
     if (this.driver.isOnline == true) {
 
       // Pega a localizaçao atual do tecnico e habilita a precisao 
@@ -230,11 +229,8 @@ export class HomePage {
               })
 
               cordova.plugins.backgroundMode.on('active', () => console.log("bgm: active"))
-
               cordova.plugins.backgroundMode.on('deactivate', () => console.log("bgm: deactive"))
-
               cordova.plugins.backgroundMode.on('failure', () => console.log("bgm: failed"))
-
               cordova.plugins.backgroundMode.on('disable', () => {
                 console.log('bgm: desabilitado')
               });

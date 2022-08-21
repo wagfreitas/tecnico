@@ -25,7 +25,7 @@
           "./": [
             {
               "xml": "<uses-permission android:name=\"android.permission.FOREGROUND_SERVICE\" />",
-              "count": 3
+              "count": 5
             }
           ]
         }
@@ -59,6 +59,10 @@
             },
             {
               "xml": "<feature name=\"Geolocation\"><param name=\"android-package\" value=\"org.apache.cordova.geolocation.Geolocation\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"Insomnia\"><param name=\"android-package\" value=\"nl.xservices.plugins.Insomnia\" /></feature>",
               "count": 1
             },
             {
@@ -225,6 +229,9 @@
       "GPS_REQUIRED": "true",
       "PACKAGE_NAME": "com.condsolution.jetporttec"
     },
+    "cordova-plugin-insomnia": {
+      "PACKAGE_NAME": "com.condsolution.jetporttec"
+    },
     "cordova-plugin-ionic-keyboard": {
       "PACKAGE_NAME": "com.condsolution.jetporttec"
     },
@@ -291,6 +298,14 @@
       "runs": true
     },
     {
+      "id": "cordova-plugin-insomnia.Insomnia",
+      "file": "plugins/cordova-plugin-insomnia/www/Insomnia.js",
+      "pluginId": "cordova-plugin-insomnia",
+      "clobbers": [
+        "window.plugins.insomnia"
+      ]
+    },
+    {
       "id": "cordova-plugin-ionic-keyboard.keyboard",
       "file": "plugins/cordova-plugin-ionic-keyboard/www/android/keyboard.js",
       "pluginId": "cordova-plugin-ionic-keyboard",
@@ -330,6 +345,7 @@
     "cordova-plugin-background-mode": "0.7.3",
     "cordova-plugin-firebasex": "13.0.1",
     "cordova-plugin-geolocation": "4.1.0",
+    "cordova-plugin-insomnia": "4.3.0",
     "cordova-plugin-ionic-keyboard": "2.2.0",
     "cordova-plugin-ionic-webview": "5.0.0",
     "cordova-plugin-splashscreen": "6.0.0",
