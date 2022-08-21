@@ -10,7 +10,74 @@
     padding: 4px;
     font-size: 14px;
   }
-  
-  
+
+  .buttoncss{
+    color:#e74c3c;
+    background-color: black;
+  }
+
+  .alertcss{
+    background-color: aqua;
+    color:#FFC107
+  }
+
+  .basic-alert {
+    --backdrop-opacity: 0.6;
+    --background: linear-gradient(90deg, rgb(30, 0, 201) 1%, rgb(248, 255, 248) 100%);
+
+    }   
+
+    
+
+
+.alert-button-inner.sc-ion-alert-md {
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+}
+
+.alert-button-inner.sc-ion-alert-md {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+a, a div, a span, a ion-icon, a ion-label, button, button div, button span, button ion-icon, button ion-label, .ion-tappable, [tappable], [tappable] div, [tappable] span, [tappable] ion-icon, [tappable] ion-label, input, textarea {
+    touch-action: manipulation;
+}
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+}
+
+.alert-button{
+    border-radius: 2px;
+    margin-left: 0;
+    margin-right: 8px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: relative;
+    background-color: #d4333300;
+    color: #8a1616;
+    font-weight: 500;
+    text-align: end;
+    text-transform: uppercase;
+    overflow: hidden;
+   
+
+}
   
   
