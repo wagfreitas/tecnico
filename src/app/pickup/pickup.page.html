@@ -41,13 +41,11 @@
           </ion-button>
         </ion-item>
 
-        <ion-item *ngIf="total" >
+        <ion-item *ngIf="total">
           <ion-label> 
-            <ion-text>
-            <h2>Valor R$:</h2>
-          </ion-text>   
+            <h2>Valor R$:</h2>   
         </ion-label>
-          <ion-input color="dark" [(ngModel)]="tax" slot="end"></ion-input>
+          <input position="floating" [(ngModel)]="tax" slot="end"/>
           <ion-button slot="end" fill="outline" color="dark"
             (click)="valuePayment()">
           OK
@@ -63,7 +61,7 @@
   <ion-toolbar>
     <ion-button *ngIf="trip.status == 'waiting'" expand="block" color="dark" (click)="pickup()">INICIAR ATENDIMENTO
     </ion-button>
-    <ion-button *ngIf="trip.status == 'going'" expand="block" color="dark" (click)="showPayment()">
+    <ion-button  *ngIf="trip.status == 'going' && mostraBotao" expand="block" color="dark" (click)="showPayment()">
      FINALIZAR O ATENDIMENTO</ion-button>
   </ion-toolbar>
 </ion-footer>

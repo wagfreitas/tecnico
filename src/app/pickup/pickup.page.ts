@@ -27,6 +27,7 @@ export class PickupPage implements OnInit {
   tax = 0 ;
   total = false; 
   finaliza=false
+  mostraBotao=false
 
   constructor(
     private tripService: TripService,
@@ -46,6 +47,7 @@ export class PickupPage implements OnInit {
 
   ionViewDidEnter() {
     this.trip = this.tripService.getCurrentTrip();
+    console.log(this.trip)
    //this.discount = (this.trip.rawfee * (this.trip.discount / 100)).toFixed(2)
     let getTrips = this.tripService.getTripStatus(this.trip.key).valueChanges().subscribe((trip: any) => {
       this.trip.status = trip.status;
@@ -122,6 +124,7 @@ export class PickupPage implements OnInit {
     this.tripService.addValueToService(this.trip.key, this.tax)
     this.common.showAlert("Valor Atualizado com Sucesso");
     this.finaliza = true
+    this.mostraBotao=true
 
   }
 
